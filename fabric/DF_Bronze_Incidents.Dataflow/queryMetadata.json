@@ -1,0 +1,64 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "DF_Bronze_Incidents",
+  "queryGroups": [
+    {
+      "id": "8c018bfb-c516-43da-9e0f-fa14e5beb5bb",
+      "name": "Parameters",
+      "description": ""
+    }
+  ],
+  "documentLocale": "en-GB",
+  "queriesMetadata": {
+    "incidents_raw": {
+      "queryId": "9e7de9af-f658-46be-8fe8-f7da2ef3795c",
+      "queryName": "incidents_raw"
+    },
+    "SourceId": {
+      "queryId": "2617675a-6541-425e-afd2-2202d21cfcdc",
+      "queryName": "SourceId",
+      "queryGroupId": "8c018bfb-c516-43da-9e0f-fa14e5beb5bb",
+      "loadEnabled": false
+    },
+    "FilePath": {
+      "queryId": "ab9739bd-5af5-473e-8af0-6df5525f1e0a",
+      "queryName": "FilePath",
+      "queryGroupId": "8c018bfb-c516-43da-9e0f-fa14e5beb5bb",
+      "loadEnabled": false
+    },
+    "SheetName": {
+      "queryId": "1ba86b19-c556-460b-9864-41487918e53e",
+      "queryName": "SheetName",
+      "queryGroupId": "8c018bfb-c516-43da-9e0f-fa14e5beb5bb",
+      "loadEnabled": false
+    },
+    "KeyColumns": {
+      "queryId": "85ee7baf-d4ee-4621-8898-a7c831c611ef",
+      "queryName": "KeyColumns",
+      "queryGroupId": "8c018bfb-c516-43da-9e0f-fa14e5beb5bb",
+      "loadEnabled": false
+    },
+    "incidents_raw_DataDestination": {
+      "queryId": "3813d40c-f575-42e7-8591-bc8e3c5f6116",
+      "queryName": "incidents_raw_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"3dee121a-d9a9-439d-be61-102f3b6d1e67\",\"DatasourceId\":\"4dae611b-b9e2-47cf-afa3-ecf06f955a35\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"3dee121a-d9a9-439d-be61-102f3b6d1e67\",\"DatasourceId\":\"08de4c45-feb5-4fa6-ab8d-ad07229282d4\"}"
+    }
+  ],
+  "parametric": true
+}

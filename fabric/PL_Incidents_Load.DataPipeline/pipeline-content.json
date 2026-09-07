@@ -1,0 +1,276 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Lookup",
+        "typeProperties": {
+          "source": {
+            "type": "DataWarehouseSource",
+            "sqlReaderQuery": "SELECT SourceId, SourceName, FilePath, SheetName, TargetTable, KeyColumns\nFROM meta.SourceRegistry\nWHERE IsActive = 1",
+            "partitionOption": "None",
+            "queryTimeout": "02:00:00"
+          },
+          "datasetSettings": {
+            "type": "DataWarehouseTable",
+            "schema": [],
+            "connectionSettings": {
+              "name": "WH_Incidents",
+              "properties": {
+                "type": "DataWarehouse",
+                "typeProperties": {
+                  "artifactId": "e3775b03-d7bb-9312-4b82-89f34b5ebacf",
+                  "endpoint": "cpn4u25xvibutp5labm3ae7kam-k7tvpnf7yibu3pm6va4yfeswbq.datawarehouse.fabric.microsoft.com",
+                  "workspaceId": "00000000-0000-0000-0000-000000000000"
+                },
+                "externalReferences": {
+                  "connection": "08de4c45-feb5-4fa6-ab8d-ad07229282d4"
+                },
+                "annotations": []
+              }
+            },
+            "annotations": []
+          },
+          "firstRowOnly": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Get sources",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@activity('Get sources').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "RefreshDataflow",
+              "typeProperties": {
+                "dataflowId": "dbc38111-5957-8834-4a38-adbd39931aa9",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "notifyOption": "NoNotification",
+                "dataflowType": "DataflowFabric",
+                "parameters": {
+                  "SourceId": {
+                    "value": {
+                      "value": "@item().SourceId\n",
+                      "type": "Expression"
+                    },
+                    "type": "Float"
+                  },
+                  "FilePath": {
+                    "value": {
+                      "value": "@item().FilePath",
+                      "type": "Expression"
+                    },
+                    "type": "String"
+                  },
+                  "SheetName": {
+                    "value": {
+                      "value": "@item().SheetName",
+                      "type": "Expression"
+                    },
+                    "type": "String"
+                  },
+                  "KeyColumns": {
+                    "value": {
+                      "value": "@item().KeyColumns",
+                      "type": "Expression"
+                    },
+                    "type": "String"
+                  }
+                },
+                "executeMashupQueriesOnly": true
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Load Bronze",
+              "dependsOn": [
+                {
+                  "activity": "Clear Bronze",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SqlServerStoredProcedure",
+              "typeProperties": {
+                "storedProcedureName": "[bronze].[DeleteSource]",
+                "storedProcedureParameters": {
+                  "Id": {
+                    "value": {
+                      "value": "@item().SourceId",
+                      "type": "Expression"
+                    },
+                    "type": "Int32"
+                  }
+                }
+              },
+              "connectionSettings": {
+                "name": "WH_Incidents",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "e3775b03-d7bb-9312-4b82-89f34b5ebacf",
+                    "endpoint": "cpn4u25xvibutp5labm3ae7kam-k7tvpnf7yibu3pm6va4yfeswbq.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "externalReferences": {
+                    "connection": "08de4c45-feb5-4fa6-ab8d-ad07229282d4"
+                  },
+                  "annotations": []
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Clear Bronze",
+              "description": "For multiple sources",
+              "dependsOn": []
+            },
+            {
+              "type": "SqlServerStoredProcedure",
+              "typeProperties": {
+                "storedProcedureName": "[meta].[RunValidations]",
+                "storedProcedureParameters": {
+                  "SourceId": {
+                    "value": {
+                      "value": "@{item().SourceId}",
+                      "type": "Expression"
+                    },
+                    "type": "Int32"
+                  }
+                }
+              },
+              "connectionSettings": {
+                "name": "WH_Incidents",
+                "properties": {
+                  "type": "DataWarehouse",
+                  "typeProperties": {
+                    "artifactId": "e3775b03-d7bb-9312-4b82-89f34b5ebacf",
+                    "endpoint": "cpn4u25xvibutp5labm3ae7kam-k7tvpnf7yibu3pm6va4yfeswbq.datawarehouse.fabric.microsoft.com",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "externalReferences": {
+                    "connection": "08de4c45-feb5-4fa6-ab8d-ad07229282d4"
+                  },
+                  "annotations": []
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Run Validations",
+              "dependsOn": [
+                {
+                  "activity": "Load Bronze",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "5412547c-af26-b265-4fec-1c17003f2aaf",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "SOURCE_ID": {
+                    "value": "@{item().SourceId}",
+                    "type": "int"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Propose Mapping",
+              "dependsOn": [
+                {
+                  "activity": "Run Validations",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "For each source",
+        "dependsOn": [
+          {
+            "activity": "Get sources",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SqlServerStoredProcedure",
+        "typeProperties": {
+          "storedProcedureName": "[gold].[LoadGold]"
+        },
+        "connectionSettings": {
+          "name": "WH_Incidents",
+          "properties": {
+            "type": "DataWarehouse",
+            "typeProperties": {
+              "artifactId": "e3775b03-d7bb-9312-4b82-89f34b5ebacf",
+              "endpoint": "cpn4u25xvibutp5labm3ae7kam-k7tvpnf7yibu3pm6va4yfeswbq.datawarehouse.fabric.microsoft.com",
+              "workspaceId": "00000000-0000-0000-0000-000000000000"
+            },
+            "externalReferences": {
+              "connection": "08de4c45-feb5-4fa6-ab8d-ad07229282d4"
+            },
+            "annotations": []
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Load gold",
+        "dependsOn": [
+          {
+            "activity": "For each source",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

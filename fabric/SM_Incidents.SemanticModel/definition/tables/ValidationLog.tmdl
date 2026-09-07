@@ -1,0 +1,119 @@
+table ValidationLog
+	lineageTag: 0d982504-451d-4929-ab17-e9fff078dfc2
+	sourceLineageTag: [audit].[ValidationLog]
+
+	measure '# Reguli picate' =
+			
+			CALCULATE( COUNTROWS( ValidationLog ), ValidationLog[Passed] = FALSE() )
+		formatString: 0
+		lineageTag: 2c447891-29f1-4d82-b673-312073afba12
+
+		changedProperty = Name
+
+	measure '# Reguli picate (ultima rulare)' =
+			
+			VAR ultima = MAX( ValidationLog[RunTimestamp] )
+			RETURN
+			    CALCULATE(
+			        COUNTROWS( ValidationLog ),
+			        ValidationLog[Passed] = FALSE(),
+			        ValidationLog[RunTimestamp] = ultima
+			    )
+		formatString: 0
+		lineageTag: 0dda241a-6d4d-4c79-85bc-f2d86689e978
+
+		changedProperty = Name
+
+	column RunId
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: b23d1dd1-d8d6-4ca3-bbc2-b2dbf7913af1
+		sourceLineageTag: RunId
+		summarizeBy: none
+		sourceColumn: RunId
+
+		annotation SummarizationSetBy = Automatic
+
+	column RunTimestamp
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 95a9cd04-c6a8-40c3-ac73-3d30842ef389
+		sourceLineageTag: RunTimestamp
+		summarizeBy: none
+		sourceColumn: RunTimestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3c56f428-c66a-49e5-b79b-64f480678890
+		sourceLineageTag: SourceId
+		summarizeBy: count
+		sourceColumn: SourceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column RuleId
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f9ca75d5-a8b9-4da1-9855-947553635e49
+		sourceLineageTag: RuleId
+		summarizeBy: count
+		sourceColumn: RuleId
+
+		annotation SummarizationSetBy = Automatic
+
+	column RuleName
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: 5370692c-bbdf-4eb4-bee2-eaee31c10da4
+		sourceLineageTag: RuleName
+		summarizeBy: none
+		sourceColumn: RuleName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Severity
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: e8146d14-c185-4dfa-9736-245b7cbd435c
+		sourceLineageTag: Severity
+		summarizeBy: none
+		sourceColumn: Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Passed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: bebda9f6-0137-4f76-a2c2-851d688ab19b
+		sourceLineageTag: Passed
+		summarizeBy: none
+		sourceColumn: Passed
+
+		annotation SummarizationSetBy = Automatic
+
+	column Details
+		dataType: string
+		sourceProviderType: varchar(4000)
+		lineageTag: 13e13c54-76e8-4dfa-87cf-589da2e7fdd3
+		sourceLineageTag: Details
+		summarizeBy: none
+		sourceColumn: Details
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ValidationLog = entity
+		mode: directLake
+		source
+			entityName: ValidationLog
+			schemaName: audit
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

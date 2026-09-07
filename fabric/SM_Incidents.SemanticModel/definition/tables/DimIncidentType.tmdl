@@ -1,0 +1,65 @@
+table DimIncidentType
+	lineageTag: 9699e12f-ecfb-4865-85e5-68a5bd214587
+	sourceLineageTag: [gold].[DimIncidentType]
+
+	column IncidentTypeKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 1ebbc056-ec85-44c7-993e-1607f70e3fac
+		sourceLineageTag: IncidentTypeKey
+		summarizeBy: none
+		sourceColumn: IncidentTypeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classification
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 9e675be5-9d4e-49f8-ac4a-354bc50b248e
+		sourceLineageTag: Classification
+		summarizeBy: none
+		sourceColumn: Classification
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodeGroup
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 07354329-c373-4cf6-8037-d44b87edbdab
+		sourceLineageTag: CodeGroup
+		summarizeBy: none
+		sourceColumn: CodeGroup
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncidentTypeName
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: c4b5b931-3e10-41d0-a132-37cae14ba92c
+		sourceLineageTag: IncidentTypeName
+		summarizeBy: none
+		sourceColumn: IncidentTypeName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SortOrder
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 210c2327-3661-417f-9b87-710e1c83a5d0
+		sourceLineageTag: SortOrder
+		summarizeBy: none
+		sourceColumn: SortOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimIncidentType = entity
+		mode: directLake
+		source
+			entityName: DimIncidentType
+			schemaName: gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DF_Bronze_Incidents"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "dbc38111-5957-8834-4a38-adbd39931aa9"
+  }
+}

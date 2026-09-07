@@ -1,0 +1,34 @@
+table DimPlant
+	lineageTag: 551b7614-39e4-4dfa-9b15-c3fc741fa46a
+	sourceLineageTag: [gold].[DimPlant]
+
+	column PlantKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 900241a1-243d-49b1-9ead-99934969d2da
+		sourceLineageTag: PlantKey
+		summarizeBy: none
+		sourceColumn: PlantKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlantCode
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 3653cf2b-f304-490f-97ee-633143d1fb49
+		sourceLineageTag: PlantCode
+		summarizeBy: none
+		sourceColumn: PlantCode
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimPlant = entity
+		mode: directLake
+		source
+			entityName: DimPlant
+			schemaName: gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,435 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/reportExtension/1.0.0/schema.json",
+  "name": "extension",
+  "entities": [
+    {
+      "name": "FactIncidents",
+      "measures": [
+        {
+          "name": "# Incidents",
+          "dataType": "Double",
+          "expression": "SUM(FactIncidents[Incidents])",
+          "formatString": "0",
+          "displayFolder": "__Calculations"
+        },
+        {
+          "name": "# Incidents Internal",
+          "dataType": "Double",
+          "expression": "\nCALCULATE( \n    FactIncidents[# Incidents],\n    KEEPFILTERS(DimIncidentType[Classification] = \"Internal\")\n)",
+          "formatString": "0",
+          "displayFolder": "__Calculations",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents External",
+          "dataType": "Double",
+          "expression": "\r\nCALCULATE( \r\n    FactIncidents[# Incidents],\r\n    KEEPFILTERS(DimIncidentType[Classification] = \"External\")\r\n)",
+          "formatString": "0",
+          "displayFolder": "__Calculations",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents Internal PY",
+          "dataType": "Double",
+          "expression": "\r\nCALCULATE([# Incidents Internal], SAMEPERIODLASTYEAR(DimDate[Date]))",
+          "formatString": "0",
+          "displayFolder": "__Calculations",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Internal"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents External PY",
+          "dataType": "Double",
+          "expression": "\r\nCALCULATE([# Incidents External], SAMEPERIODLASTYEAR(DimDate[Date]))",
+          "formatString": "0",
+          "displayFolder": "__Calculations",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents External"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents PY",
+          "dataType": "Double",
+          "expression": "\r\nCALCULATE(FactIncidents[# Incidents], SAMEPERIODLASTYEAR(DimDate[Date]))",
+          "formatString": "0",
+          "displayFolder": "__Calculations",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents Chg",
+          "dataType": "Double",
+          "expression": "IF ( NOT ISBLANK ( [# Incidents PY] ), [# Incidents] - [# Incidents PY] )",
+          "formatString": "\"▲ \"#,##0;\"▼ \"#,##0;0",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents PY"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents Internal Chg",
+          "dataType": "Double",
+          "expression": "IF ( NOT ISBLANK ( [# Incidents Internal PY] ), [# Incidents Internal] - [# Incidents Internal PY] )",
+          "formatString": "\"▲ \"#,##0;\"▼ \"#,##0;0",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Internal PY"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Internal"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents External Chg",
+          "dataType": "Double",
+          "expression": "IF ( NOT ISBLANK ( [# Incidents External PY] ), [# Incidents External] - [# Incidents External PY] )",
+          "formatString": "\"▲ \"#,##0;\"▼ \"#,##0;0",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents External PY"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents External"
+              }
+            ]
+          }
+        },
+        {
+          "name": "% Incidents Chg",
+          "dataType": "Double",
+          "expression": "DIVIDE([# Incidents Chg], [# Incidents PY])",
+          "formatString": "+0.0%;-0.0%;0.0%",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Chg"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents PY"
+              }
+            ]
+          }
+        },
+        {
+          "name": "% Incidents Internal Chg",
+          "dataType": "Integer",
+          "expression": "DIVIDE([# Incidents Internal Chg], [# Incidents Internal PY])",
+          "formatString": "+0.0%;-0.0%;0.0%",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Internal Chg"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Internal PY"
+              }
+            ]
+          }
+        },
+        {
+          "name": "% Incidents External Chg",
+          "dataType": "Double",
+          "expression": "DIVIDE([# Incidents External Chg], [# Incidents External PY])",
+          "formatString": "+0.0%;-0.0%;0.0%",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents External Chg"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents External PY"
+              }
+            ]
+          }
+        },
+        {
+          "name": "_Latest Month Date",
+          "dataType": "Double",
+          "expression": "\r\nCALCULATE(\r\n    MAX(DimDate[Date]),\r\n    FILTER(VALUES(DimDate[Date]), NOT ISBLANK([# Incidents]))\r\n)",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents Latest Month",
+          "dataType": "Double",
+          "expression": "\r\nVAR d = [_Latest Month Date]\r\nRETURN\r\n    CALCULATE([# Incidents], REMOVEFILTERS(DimDate), DimDate[Date] = d)",
+          "formatString": "0",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "_Latest Month Date"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents Previous Month",
+          "dataType": "Double",
+          "expression": "\r\nVAR d = [_Latest Month Date]\r\nVAR p = EDATE(d, -1)\r\nRETURN\r\n    CALCULATE([# Incidents], REMOVEFILTERS(DimDate), DimDate[Date] = p)",
+          "formatString": "0",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "_Latest Month Date"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents"
+              }
+            ]
+          }
+        },
+        {
+          "name": "# Incidents Latest Month Chg",
+          "dataType": "Double",
+          "expression": "IF ( NOT ISBLANK ( [# Incidents Previous Month] ), [# Incidents Latest Month] - [# Incidents Previous Month] )",
+          "formatString": "\"▲ \"#,##0;\"▼ \"#,##0;0",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Previous Month"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Latest Month"
+              }
+            ]
+          }
+        },
+        {
+          "name": "% Incidents Latest Month Chg",
+          "dataType": "Double",
+          "expression": "\r\nDIVIDE([# Incidents Latest Month Chg], [# Incidents Previous Month])",
+          "formatString": "+0.0%;-0.0%;0.0%",
+          "displayFolder": "__Variance",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Latest Month Chg"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "# Incidents Previous Month"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Latest Month Label",
+          "dataType": "Double",
+          "expression": "UPPER(FORMAT([_Latest Month Date], \"MMM\"))",
+          "displayFolder": "__Labels",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "_Latest Month Date"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Overview Signal",
+          "dataType": "Text",
+          "expression": "\r\nVAR TotalPct  = [% Incidents Chg]\r\nVAR MonthPct  = [% Incidents Latest Month Chg]\r\nVAR LastName  = FORMAT([_Latest Month Date], \"MMMM\")\r\nVAR PrevName  = FORMAT(EDATE([_Latest Month Date], -1), \"MMMM\")\r\nVAR TotalDir  = IF(TotalPct >= 0, \"higher\", \"lower\")\r\nVAR MonthDir  = IF(MonthPct >= 0, \"increased\", \"decreased\")\r\nVAR Watch     = IF(MonthPct > 0, \" and should be monitored\", \"\")\r\nRETURN\r\n    IF(\r\n        ISBLANK(TotalPct),\r\n        \"No prior-year data available for the selected period.\",\r\n        \"Total incidents are \" & FORMAT(ABS(TotalPct), \"0.0%\") & \" \" & TotalDir &\r\n        \" than PY, while \" & LastName & \" \" & MonthDir & \" \" &\r\n        FORMAT(ABS(MonthPct), \"0.0%\") & \" versus \" & PrevName & Watch & \".\"\r\n    )",
+          "displayFolder": "__Calculations",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "% Incidents Chg"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "% Incidents Latest Month Chg"
+              },
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "_Latest Month Date"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Incidents PY Label",
+          "dataType": "Text",
+          "expression": "\"PY \" & ( MAX( DimDate[Year] ) - 1 )",
+          "displayFolder": "__Labels"
+        },
+        {
+          "name": "Incidents Label",
+          "dataType": "Text",
+          "expression": "\"TOTAL INCIDENTS • \" & [Selected Year]",
+          "displayFolder": "__Labels",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "Selected Year"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Selected Year",
+          "dataType": "Double",
+          "expression": "COALESCE( SELECTEDVALUE( DimDate[Year] ), \"All years\" )",
+          "displayFolder": "__Calculations"
+        },
+        {
+          "name": "Internal Label",
+          "dataType": "Text",
+          "expression": "\"INTERNAL • \"     & [Selected Year]",
+          "displayFolder": "__Labels",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "Selected Year"
+              }
+            ]
+          }
+        },
+        {
+          "name": "External Label",
+          "dataType": "Text",
+          "expression": "\"EXTERNAL • \"     & [Selected Year]",
+          "displayFolder": "__Labels",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "Selected Year"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Latest Month Label2",
+          "dataType": "Text",
+          "expression": "\"LATEST MONTH • \" & [Latest Month Label]",
+          "displayFolder": "__Labels",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "FactIncidents",
+                "name": "Latest Month Label"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+relationship e92812c8-d572-bc26-c662-899518b11509
+	fromColumn: FactIncidents.PlantKey
+	toColumn: DimPlant.PlantKey
+
+relationship 15bdb4bc-f5c6-c516-0a53-3b9429e78f4e
+	fromColumn: FactIncidents.IncidentTypeKey
+	toColumn: DimIncidentType.IncidentTypeKey
+
+relationship 71d1d11b-aa7e-6089-db47-44b9582f793b
+	fromColumn: FactIncidents.DateKey
+	toColumn: DimDate.DateKey
+

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "cf20c71149797050659b",
+  "position": {
+    "x": 0,
+    "y": 63.095238095238081,
+    "z": 1000,
+    "height": 45,
+    "width": 641.66666666666674
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Monitor incident volume, composition and plant-level performance",
+                    "textStyle": {
+                      "fontFamily": "Aptos",
+                      "fontSize": "14pt",
+                      "color": "#6c7b8e"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "167f1fd53f4bef49500c"
+}

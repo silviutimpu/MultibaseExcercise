@@ -1,0 +1,57 @@
+table FactIncidents
+	lineageTag: 3153409e-a276-4d43-a384-fee6bae3fd3f
+	sourceLineageTag: [gold].[FactIncidents]
+
+	column PlantKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 67bc1bf8-f847-47b5-b67b-8ed274718033
+		sourceLineageTag: PlantKey
+		summarizeBy: none
+		sourceColumn: PlantKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e4d2ebc5-f1f6-4c23-9e18-2539d3a73ecd
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column IncidentTypeKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: b6af2618-60ca-4dae-affc-dc39fc9bb411
+		sourceLineageTag: IncidentTypeKey
+		summarizeBy: none
+		sourceColumn: IncidentTypeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Incidents
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b7b85a15-8f0a-45d5-b8bc-920664f9b4da
+		sourceLineageTag: Incidents
+		summarizeBy: sum
+		sourceColumn: Incidents
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactIncidents = entity
+		mode: directLake
+		source
+			entityName: FactIncidents
+			schemaName: gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

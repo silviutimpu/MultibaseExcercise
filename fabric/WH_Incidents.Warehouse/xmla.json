@@ -1,0 +1,1086 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1606,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "ValidationLog",
+        "sourceLineageTag": "[audit].[ValidationLog]",
+        "columns": [
+          {
+            "name": "RunId",
+            "dataType": "string",
+            "sourceColumn": "RunId",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "RunId",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RunTimestamp",
+            "dataType": "dateTime",
+            "sourceColumn": "RunTimestamp",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "RunTimestamp",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceId",
+            "dataType": "int64",
+            "sourceColumn": "SourceId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "SourceId",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RuleId",
+            "dataType": "int64",
+            "sourceColumn": "RuleId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "RuleId",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RuleName",
+            "dataType": "string",
+            "sourceColumn": "RuleName",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "RuleName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Severity",
+            "dataType": "string",
+            "sourceColumn": "Severity",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Severity",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Passed",
+            "dataType": "boolean",
+            "sourceColumn": "Passed",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "Passed",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Details",
+            "dataType": "string",
+            "sourceColumn": "Details",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Details",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "ValidationLog",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "audit"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "incidents_raw",
+        "sourceLineageTag": "[bronze].[incidents_raw]",
+        "columns": [
+          {
+            "name": "SourceID",
+            "dataType": "int64",
+            "sourceColumn": "SourceID",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "SourceID",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Plant",
+            "dataType": "string",
+            "sourceColumn": "Plant",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Plant",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Month",
+            "dataType": "dateTime",
+            "sourceColumn": "Month",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "Month",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceColumn",
+            "dataType": "string",
+            "sourceColumn": "SourceColumn",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SourceColumn",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Value",
+            "dataType": "int64",
+            "sourceColumn": "Value",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Value",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "incidents_raw",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "bronze"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DimDate",
+        "sourceLineageTag": "[gold].[DimDate]",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "DateKey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "Date",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "Year",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "MonthNumber",
+            "dataType": "int64",
+            "sourceColumn": "MonthNumber",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "MonthNumber",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "MonthShort",
+            "dataType": "string",
+            "sourceColumn": "MonthShort",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "MonthShort",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Period",
+            "dataType": "string",
+            "sourceColumn": "Period",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Period",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DimDate",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DimIncidentType",
+        "sourceLineageTag": "[gold].[DimIncidentType]",
+        "columns": [
+          {
+            "name": "IncidentTypeKey",
+            "dataType": "int64",
+            "sourceColumn": "IncidentTypeKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "IncidentTypeKey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Classification",
+            "dataType": "string",
+            "sourceColumn": "Classification",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Classification",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CodeGroup",
+            "dataType": "string",
+            "sourceColumn": "CodeGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CodeGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IncidentTypeName",
+            "dataType": "string",
+            "sourceColumn": "IncidentTypeName",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IncidentTypeName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SortOrder",
+            "dataType": "int64",
+            "sourceColumn": "SortOrder",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "SortOrder",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DimIncidentType",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DimPlant",
+        "sourceLineageTag": "[gold].[DimPlant]",
+        "columns": [
+          {
+            "name": "PlantKey",
+            "dataType": "int64",
+            "sourceColumn": "PlantKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "PlantKey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PlantCode",
+            "dataType": "string",
+            "sourceColumn": "PlantCode",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "PlantCode",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DimPlant",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "FactIncidents",
+        "sourceLineageTag": "[gold].[FactIncidents]",
+        "columns": [
+          {
+            "name": "PlantKey",
+            "dataType": "int64",
+            "sourceColumn": "PlantKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "PlantKey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "DateKey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IncidentTypeKey",
+            "dataType": "int64",
+            "sourceColumn": "IncidentTypeKey",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "IncidentTypeKey",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Incidents",
+            "dataType": "int64",
+            "sourceColumn": "Incidents",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Incidents",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "FactIncidents",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "ColumnMapping",
+        "sourceLineageTag": "[meta].[ColumnMapping]",
+        "columns": [
+          {
+            "name": "MappingId",
+            "dataType": "int64",
+            "sourceColumn": "MappingId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "MappingId",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceId",
+            "dataType": "int64",
+            "sourceColumn": "SourceId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "SourceId",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceColumn",
+            "dataType": "string",
+            "sourceColumn": "SourceColumn",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SourceColumn",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Classification",
+            "dataType": "string",
+            "sourceColumn": "Classification",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Classification",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CodeGroup",
+            "dataType": "string",
+            "sourceColumn": "CodeGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CodeGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsActive",
+            "dataType": "boolean",
+            "sourceColumn": "IsActive",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "IsActive",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "ColumnMapping",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "meta"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "DQRules",
+        "sourceLineageTag": "[meta].[DQRules]",
+        "columns": [
+          {
+            "name": "RuleId",
+            "dataType": "int64",
+            "sourceColumn": "RuleId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "RuleId",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceId",
+            "dataType": "int64",
+            "sourceColumn": "SourceId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "SourceId",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RuleName",
+            "dataType": "string",
+            "sourceColumn": "RuleName",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "RuleName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RuleType",
+            "dataType": "string",
+            "sourceColumn": "RuleType",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "RuleType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "TargetColumn",
+            "dataType": "string",
+            "sourceColumn": "TargetColumn",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "TargetColumn",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "RuleParameters",
+            "dataType": "string",
+            "sourceColumn": "RuleParameters",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "RuleParameters",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Severity",
+            "dataType": "string",
+            "sourceColumn": "Severity",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Severity",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsActive",
+            "dataType": "boolean",
+            "sourceColumn": "IsActive",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "IsActive",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "DQRules",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "meta"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "SourceRegistry",
+        "sourceLineageTag": "[meta].[SourceRegistry]",
+        "columns": [
+          {
+            "name": "SourceId",
+            "dataType": "int64",
+            "sourceColumn": "SourceId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "SourceId",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceName",
+            "dataType": "string",
+            "sourceColumn": "SourceName",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SourceName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "FilePath",
+            "dataType": "string",
+            "sourceColumn": "FilePath",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "FilePath",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SheetName",
+            "dataType": "string",
+            "sourceColumn": "SheetName",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SheetName",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "TargetTable",
+            "dataType": "string",
+            "sourceColumn": "TargetTable",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "TargetTable",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "KeyColumns",
+            "dataType": "string",
+            "sourceColumn": "KeyColumns",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "KeyColumns",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsActive",
+            "dataType": "boolean",
+            "sourceColumn": "IsActive",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "bit",
+            "sourceLineageTag": "IsActive",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "SourceRegistry",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "meta"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "incidents",
+        "sourceLineageTag": "[silver].[incidents]",
+        "columns": [
+          {
+            "name": "Plant",
+            "dataType": "string",
+            "sourceColumn": "Plant",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Plant",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Month",
+            "dataType": "dateTime",
+            "sourceColumn": "Month",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "Month",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Classification",
+            "dataType": "string",
+            "sourceColumn": "Classification",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Classification",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CodeGroup",
+            "dataType": "string",
+            "sourceColumn": "CodeGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CodeGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Incidents",
+            "dataType": "int64",
+            "sourceColumn": "Incidents",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Incidents",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "incidents",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "silver"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}

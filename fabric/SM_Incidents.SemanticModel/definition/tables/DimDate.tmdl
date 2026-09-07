@@ -1,0 +1,82 @@
+table DimDate
+	lineageTag: 9bb17f6f-b8f3-435f-9b50-99d991f04591
+	sourceLineageTag: [gold].[DimDate]
+	dataCategory: Time
+
+	column DateKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c88cd5fc-c25b-416c-883f-3e016bbf51b4
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 70207e02-e022-4f2e-921d-35ea917ca788
+		sourceLineageTag: Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f6c6f5e5-b8f0-4950-9cff-1135b08174c3
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0d06eaa4-266d-4708-92ab-0481c9cafd51
+		sourceLineageTag: MonthNumber
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShort
+		dataType: string
+		sourceProviderType: varchar(3)
+		lineageTag: d62bb9e1-3343-4cc5-8e4d-46b10a85b31e
+		sourceLineageTag: MonthShort
+		summarizeBy: none
+		sourceColumn: MonthShort
+		sortByColumn: MonthNumber
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Period
+		dataType: string
+		sourceProviderType: varchar(30)
+		lineageTag: c9611fb1-56b1-4265-aed0-ba9e9d428eb1
+		sourceLineageTag: Period
+		summarizeBy: none
+		sourceColumn: Period
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = entity
+		mode: directLake
+		source
+			entityName: DimDate
+			schemaName: gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

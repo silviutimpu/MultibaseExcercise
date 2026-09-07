@@ -1,0 +1,351 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e00e9259a08cf2d85ef8",
+  "position": {
+    "x": 39.745222929936304,
+    "y": 339.36305732484078,
+    "z": 0,
+    "height": 525.859872611465,
+    "width": 1809.936305732484,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ValidationLog"
+                    }
+                  },
+                  "Property": "RunTimestamp"
+                }
+              },
+              "queryRef": "ValidationLog.RunTimestamp",
+              "nativeQueryRef": "RunTimestamp"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ValidationLog"
+                    }
+                  },
+                  "Property": "SourceId"
+                }
+              },
+              "queryRef": "CountNonNull(ValidationLog.SourceId)",
+              "nativeQueryRef": "SourceId"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ValidationLog"
+                    }
+                  },
+                  "Property": "RuleName"
+                }
+              },
+              "queryRef": "ValidationLog.RuleName",
+              "nativeQueryRef": "RuleName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ValidationLog"
+                    }
+                  },
+                  "Property": "Severity"
+                }
+              },
+              "queryRef": "ValidationLog.Severity",
+              "nativeQueryRef": "Severity"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ValidationLog"
+                    }
+                  },
+                  "Property": "Passed"
+                }
+              },
+              "queryRef": "ValidationLog.Passed",
+              "nativeQueryRef": "Passed"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ValidationLog"
+                    }
+                  },
+                  "Property": "Details"
+                }
+              },
+              "queryRef": "ValidationLog.Details",
+              "nativeQueryRef": "Details"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ValidationLog"
+                  }
+                },
+                "Property": "RunTimestamp"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 2,
+                              "Left": {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "ValidationLog"
+                                    }
+                                  },
+                                  "Property": "# Reguli picate"
+                                }
+                              },
+                              "Right": {
+                                "RangePercent": {
+                                  "Min": {
+                                    "ScopedEval": {
+                                      "Expression": {
+                                        "Aggregation": {
+                                          "Expression": {
+                                            "ScopedEval": {
+                                              "Expression": {
+                                                "Measure": {
+                                                  "Expression": {
+                                                    "SourceRef": {
+                                                      "Entity": "ValidationLog"
+                                                    }
+                                                  },
+                                                  "Property": "# Reguli picate"
+                                                }
+                                              },
+                                              "Scope": [
+                                                {
+                                                  "AllRolesRef": {}
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "Function": 3
+                                        }
+                                      },
+                                      "Scope": []
+                                    }
+                                  },
+                                  "Max": {
+                                    "ScopedEval": {
+                                      "Expression": {
+                                        "Aggregation": {
+                                          "Expression": {
+                                            "ScopedEval": {
+                                              "Expression": {
+                                                "Measure": {
+                                                  "Expression": {
+                                                    "SourceRef": {
+                                                      "Entity": "ValidationLog"
+                                                    }
+                                                  },
+                                                  "Property": "# Reguli picate"
+                                                }
+                                              },
+                                              "Scope": [
+                                                {
+                                                  "AllRolesRef": {}
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "Function": 4
+                                        }
+                                      },
+                                      "Scope": []
+                                    }
+                                  },
+                                  "Percent": 0.01
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#F1C9CE'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "ValidationLog.RuleName"
+          }
+        },
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5c297f718cb71a73fb66",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ValidationLog"
+              }
+            },
+            "Property": "RunTimestamp"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d47067ccb92ba43e5533",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ValidationLog"
+              }
+            },
+            "Property": "RuleName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "453f8be4ab018ea0c27c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ValidationLog"
+              }
+            },
+            "Property": "Severity"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a3a5157227a6d41c9a92",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ValidationLog"
+              }
+            },
+            "Property": "Passed"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "aa4f43938bcd673ec922",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ValidationLog"
+              }
+            },
+            "Property": "Details"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
