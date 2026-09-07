@@ -1,0 +1,17 @@
+# Prep notes, not a deliverable
+docs/TALKING-POINTS.md
+
+# Client-supplied and generated source data
+*.xlsx
+
+# Client documents: brief, mockup, job description
+*.pdf
+
+# Power BI local state
+report/**/.pbi/localSettings.json
+report/**/cache.abf
+
+# Scratch
+report/*.py
+report/*.ps1
+report/*.bak
