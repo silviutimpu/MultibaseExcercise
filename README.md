@@ -43,6 +43,7 @@ Direct Lake        SM_Incidents → RPT_Plant_Overview
 sql/     execution order matters; the numbers are the order
 docs/    the design document
 report/  the Power BI project (PBIP)
+fabric/  workspace items, synced by Fabric Git integration
 ```
 
 ### SQL scripts
