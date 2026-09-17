@@ -35,16 +35,15 @@
       "queryGroupId": "8c018bfb-c516-43da-9e0f-fa14e5beb5bb",
       "loadEnabled": false
     },
-    "KeyColumns": {
-      "queryId": "85ee7baf-d4ee-4621-8898-a7c831c611ef",
-      "queryName": "KeyColumns",
-      "queryGroupId": "8c018bfb-c516-43da-9e0f-fa14e5beb5bb",
-      "loadEnabled": false
-    },
     "incidents_raw_DataDestination": {
       "queryId": "3813d40c-f575-42e7-8591-bc8e3c5f6116",
       "queryName": "incidents_raw_DataDestination",
       "isHidden": true,
+      "loadEnabled": false
+    },
+    "KeyColumnMeta": {
+      "queryId": "026c8df2-de21-4f6e-8991-c881c3ff2458",
+      "queryName": "KeyColumnMeta",
       "loadEnabled": false
     }
   },
@@ -60,5 +59,6 @@
       "connectionId": "{\"ClusterId\":\"3dee121a-d9a9-439d-be61-102f3b6d1e67\",\"DatasourceId\":\"08de4c45-feb5-4fa6-ab8d-ad07229282d4\"}"
     }
   ],
+  "fastCombine": true,
   "parametric": true
 }

@@ -845,6 +845,87 @@
         ]
       },
       {
+        "name": "KeyColumnMapping",
+        "sourceLineageTag": "[meta].[KeyColumnMapping]",
+        "columns": [
+          {
+            "name": "SourceId",
+            "dataType": "int64",
+            "sourceColumn": "SourceId",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "SourceId",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "SourceColumn",
+            "dataType": "string",
+            "sourceColumn": "SourceColumn",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "SourceColumn",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "TargetColumn",
+            "dataType": "string",
+            "sourceColumn": "TargetColumn",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "TargetColumn",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DataType",
+            "dataType": "string",
+            "sourceColumn": "DataType",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "DataType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "KeyColumnMapping",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "meta"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "SourceRegistry",
         "sourceLineageTag": "[meta].[SourceRegistry]",
         "columns": [
@@ -897,34 +978,6 @@
             "sourceColumn": "SheetName",
             "sourceProviderType": "varchar",
             "sourceLineageTag": "SheetName",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "TargetTable",
-            "dataType": "string",
-            "sourceColumn": "TargetTable",
-            "sourceProviderType": "varchar",
-            "sourceLineageTag": "TargetTable",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
-            "name": "KeyColumns",
-            "dataType": "string",
-            "sourceColumn": "KeyColumns",
-            "sourceProviderType": "varchar",
-            "sourceLineageTag": "KeyColumns",
             "summarizeBy": "none",
             "annotations": [
               {

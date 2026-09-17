@@ -6,7 +6,7 @@
         "typeProperties": {
           "source": {
             "type": "DataWarehouseSource",
-            "sqlReaderQuery": "SELECT SourceId, SourceName, FilePath, SheetName, TargetTable, KeyColumns\nFROM meta.SourceRegistry\nWHERE IsActive = 1",
+            "sqlReaderQuery": "SELECT SourceId, SourceName, FilePath, SheetName\nFROM meta.SourceRegistry\nWHERE IsActive = 1",
             "partitionOption": "None",
             "queryTimeout": "02:00:00"
           },
@@ -61,7 +61,7 @@
                 "parameters": {
                   "SourceId": {
                     "value": {
-                      "value": "@item().SourceId\n",
+                      "value": "@item().SourceId",
                       "type": "Expression"
                     },
                     "type": "Float"
@@ -76,13 +76,6 @@
                   "SheetName": {
                     "value": {
                       "value": "@item().SheetName",
-                      "type": "Expression"
-                    },
-                    "type": "String"
-                  },
-                  "KeyColumns": {
-                    "value": {
-                      "value": "@item().KeyColumns",
                       "type": "Expression"
                     },
                     "type": "String"
@@ -200,7 +193,10 @@
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "SOURCE_ID": {
-                    "value": "@{item().SourceId}",
+                    "value": {
+                      "value": "@{item().SourceId}",
+                      "type": "Expression"
+                    },
                     "type": "int"
                   }
                 }

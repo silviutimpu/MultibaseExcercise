@@ -26,7 +26,7 @@ API_KEY   = notebookutils.credentials.getSecret(
                 "https://operoutermultibase.vault.azure.net/",
                 "openrouter-key")
 MODEL     = "deepseek/deepseek-v4-flash-0731"
-SOURCE_ID = 2
+SOURCE_ID = 4
 WAREHOUSE = "WH_Incidents"
 
 # METADATA ********************
